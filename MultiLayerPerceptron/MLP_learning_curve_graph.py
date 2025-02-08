@@ -37,7 +37,7 @@ plt.fill_between(train_sizes, test_mean - test_std, test_mean + test_std, color=
 
 plt.xlabel("Training Set Size")
 plt.ylabel("Accuracy")
-plt.title("Learning Curve for Decision Tree Classifier")
+plt.title("Learning Curve for Multi Layer Perceptron")
 plt.legend()
 plt.grid()
 plt.show()
