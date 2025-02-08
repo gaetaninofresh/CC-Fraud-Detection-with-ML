@@ -12,7 +12,7 @@ data = data.dropna(subset=['Class'])
 X = data.drop(columns='Class', axis=1)
 Y = data['Class']
 
-model = load('TrainedMLP.joblib')
+model = load('MLP_trained.joblib')
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, Y,  test_size=0.2, stratify=Y, random_state=1)
