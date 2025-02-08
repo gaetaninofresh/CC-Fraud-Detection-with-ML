@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import learning_curve
 from sklearn.tree import DecisionTreeClassifier
 from joblib import load
-
+from sklearn.model_selection import train_test_split
 
 path = "./"
 data = pandas.read_csv(path+'creditcard_2023.csv')

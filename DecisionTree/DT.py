@@ -4,6 +4,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV
 from joblib import dump
+from sklearnex import patch_sklearn
+
+patch_sklearn()
+
 
 path = "./"
 data = pandas.read_csv(path+'creditcard_2023.csv')
