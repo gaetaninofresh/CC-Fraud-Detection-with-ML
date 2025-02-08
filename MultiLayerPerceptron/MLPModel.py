@@ -6,7 +6,7 @@ from sklearnex import patch_sklearn
 
 patch_sklearn()
 
-path = "../"
+path = "./"
 data = pandas.read_csv(path+'creditcard_2023.csv')
 data = data.dropna(subset=['Class'])
 
