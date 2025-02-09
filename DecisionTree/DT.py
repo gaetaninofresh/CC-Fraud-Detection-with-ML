@@ -27,3 +27,4 @@ decision_tree = DecisionTreeClassifier(**params, random_state=1)
 decision_tree.fit(X_train, Y_train)
 
 dump(decision_tree, 'DT_trained.joblib')
+
