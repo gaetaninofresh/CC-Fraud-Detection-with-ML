@@ -2,10 +2,13 @@ from joblib import load
 import pandas 
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn
+
+import os
+
+local_path = os.path.dirname(__file__)
 
 
-random_search = load('random_search.joblib')
+random_search = load(f'{local_path}random_search.joblib')
 results = random_search.cv_results_
 
 df_results = pandas.DataFrame(results['params'])
