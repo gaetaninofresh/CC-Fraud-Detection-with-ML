@@ -10,15 +10,45 @@ Questa analisi mira a valutare l'efficacia di ciascun modello nel rilevare attiv
 
 ## Dataset
 
-Per questo progetto, abbiamo utilizzato il dataset [Credit Card Fraud Detection Dataset 2023](https://www.kaggle.com/datasets/nelgiriyewithana/credit-card-fraud-detection-dataset-2023/discussion?sort=undefined). I dati sono stati preventivamente normalizzati per motivi di privacy e sicurezza, e le classi risultano già bilanciate. Di conseguenza, non è stato necessario applicare ulteriori tecniche di preprocessing.
+Per questo progetto, abbiamo utilizzato il dataset [Credit Card Fraud Detection Dataset 2023](https://www.kaggle.com/datasets/nelgiriyewithana/credit-card-fraud-detection-dataset-2023/discussion?sort=undefined). I dati sono stati preventivamente normalizzati per motivi di privacy e sicurezza, e le classi risultano già bilanciate.
 
 ## Strumenti e librerie utilizzate
 
-Abbiamo utilizzato le seguenti librerie Python:
+Per l'implementazione dei modelli e l'analisi dei dati, sono state utilizzate le seguenti librerie e strumenti:
 
-* [pandas](https://pandas.pydata.org/) per gestire il dataset
-* [sklearn](https://scikit-learn.org/dev/index.html) e la relativa patch [sklearnex](https://github.com/uxlfoundation/scikit-learn-intelex) per implementari i classificatori
-* [numpy](https://numpy.org/) e [mathplotlib](https://matplotlib.org/) per la realizzazione dei grafici
+- **[Scikit-Learn (sklearn)](https://scikit-learn.org/stable/)**: per l'implementazione dei classificatori (kNN, MLP, DT) e per la valutazione delle prestazioni.
+- **[Sklearnex](https://intel.github.io/scikit-learn-intelex/)**: una patch per ottimizzare le prestazioni di Scikit-Learn su hardware moderno.
+- **[NumPy](https://numpy.org/)**: per la manipolazione dei dati e le operazioni numeriche.
+- **[Matplotlib](https://matplotlib.org/)**: per la visualizzazione dei grafici e delle curve di apprendimento.
+
+## Analisi del dataset
+
+#### Caricamento ed esplorazione del dataset
+
+Abbiamo utilizzato la libreria **pandas** per caricare e analizzare il dataset. Il dataset è stato letto tramite la funzione integrata di pandas per la lettura di file CSV. Per un'anteprima del dataset, abbiamo utilizzato la funzione *head()* per visualizzare le prime righe. Il dataset è composto da  **31 colonne** , tra cui:
+
+* **id** : Identificativo univoco della transazione
+* **V1-V28** : Vettori delle feature (dati anonimizzati)
+* **Amount** : Importo della transazione
+* **Class** : Etichetta binaria che indica se la transazione è fraudolenta *1* o legittima *0*
+
+#### Verifica valori mancanti
+
+Per verificare la presenza di valori mancanti, abbiamo utilizzato la funzione *isnull().sum()*, questo ci ha permesso di confermare che il dataset non contiene valori nulli.
+
+#### Separazione delle feature e delle label
+
+Abbiamo separato le feature *x* dalle label *y* utilizzando le funzioni di pandas. Le feature sono tutte le colonne tranne la colonna *Class* che rappresenta la label. Inoltre per facilitare l'elaborazione successiva, abbiamo convertito i DataFrame di pandas in array NumPy.
+
+#### Suddivisione in training set e test set
+
+Abbiamo suddiviso il dataset in un training set *80%* e un test set *20%* utilizzando la tecnica dell' **holdout set** . Per mantenere il bilanciamento delle classi, abbiamo utilizzato il parametro *stratify.*
+
+#### Normalizzazione dei dati
+
+Infine, abbiamo normalizzato i dati utilizzando la classe *StandardScaler* di *scikit-learn*. Sebbene i dati fossero già normalizzati abbiamo optato per una seconda normalizzazione per garantire che tutte le feature avessero la stessa scala.
+
+Con questi passaggi abbiamo preparato il dataset per l'addestramento dei vari modelli di machine learning.
 
 ### Metriche di valutazione:
 
@@ -80,8 +110,8 @@ Il grafico mostra il confronto tra le performance del modello *kNN* utilizzando 
 
 Per l'addestamento del classificatore basato sull'albero di decisione binario abbiamo utilizzato la classe *DecisionTreeClassifier della libreria **Scikit-Learn***. Per ottimizzare le prestazioni del modello, abbiamo utilizzato ***RandomizedSearchCV***, una tecnica di ricerca casuale degli iperparametri, valutando diverse combinazioni per migliorare il punteggio F1. La ricerca è stata effettuata con la seguente griglia di iperparametri:
 
-1. *criterion*: ['gini', 'entropy', 'log_loss'] = Funzione di impurità utilizzata per la suddivisione dei nodi.
-2. *splitter*: ['best', 'random'] =Strategia di scelta delle feature per la suddivisione.
+1. *criterion*: [gini, entropy, log_loss] = Funzione di impurità utilizzata per la suddivisione dei nodi.
+2. *splitter*: [best, random] =Strategia di scelta delle feature per la suddivisione.
 3. *max_depth*: [10, 20, 30] = Profondità massima dell'albero.
 4. *min_samples_split*: [2, 5, 10] = Numero minimo di campioni richiesti per dividere un nodo.
 5. *min_samples_leaf*: [1, 2, 4] = Numero minimo di campioni in un nodo foglia
@@ -99,3 +129,13 @@ Il modello ha raggiunto un'accuratezza sul **test set** pari a *99,97%* con ques
 Dopo aver selezionato il miglior modello, ne abbiamo valutato l'andamento utilizzando una **learning curve** che mostra il progresso della performance su training e validation set in funzione della dimensione dei dati di addestramento.
 
 ![1739127377827](image/README/1739127377827.png)
+
+## Conclusioni
+
+Il progetto ha dimostrato che tutti e tre i modelli *MLP, kNN, DT* sono in grado di classificare con successo le transazioni fraudolente con un'accuratezza molto elevata.
+
+| Modello | Accuracy | Precision | Recall   | F1-Score |
+| :-----: | -------- | --------- | -------- | :------: |
+|   kNN   | 1.000000 | 1.000000  | 1.000000 | 1.000000 |
+|   MLP   | 0,998426 | 0.998427  | 0.998426 | 0,998426 |
+|   DC   | 0.999710 | 0.999710  | 0.999710 | 0.999710 |
