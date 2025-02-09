@@ -1,9 +1,9 @@
-from joblib import load 
 import pandas 
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import learning_curve
 from sklearn.model_selection import train_test_split
+from joblib import load 
 
 path = "./"
 data = pandas.read_csv(path+'creditcard_2023.csv')

@@ -2,7 +2,6 @@ from joblib import load
 import pandas 
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn
 
 
 random_search = load('random_search.joblib')

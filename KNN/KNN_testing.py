@@ -38,7 +38,6 @@ def compareModels(features, target, n_neighbors, weights, verbose=False):
               "Precision" : precision_score(target, target_pred),
               "Recall" : recall_score(target, target_pred),
               "F1-Score" : f1_score(target, target_pred),
-              #"ROC-AUC" : roc_auc_score(target_pred, prob_pred)
           }
       )
       if verbose:

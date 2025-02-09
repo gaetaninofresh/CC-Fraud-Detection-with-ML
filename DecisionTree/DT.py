@@ -8,8 +8,6 @@ import os
 
 patch_sklearn()
 
-
-
 local_path = os.path.dirname(__file__)
 patch_sklearn()
 
@@ -20,7 +18,6 @@ X = data.drop(columns='Class', axis=1)
 Y = data['Class']
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y,  test_size=0.2, stratify=Y, random_state=1)
-
 
 random_search = load(f'{local_path}/DT_random_search.joblib')
 

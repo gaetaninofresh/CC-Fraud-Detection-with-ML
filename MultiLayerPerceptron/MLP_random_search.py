@@ -1,8 +1,6 @@
 import pandas
 
-
-
-#Quick and dirty way to resize the dataset keeping the classes balanced
+#Funzione per ridimensionare il datset mantendendo le classi bilanciate
 def sampleDataset(dataframe, frac):
   return pandas.concat(
       [
