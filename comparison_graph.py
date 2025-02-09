@@ -5,7 +5,9 @@ import pandas
 
 knn_params = load('./KNN/KNN_results.joblib')
 mlp = load('./MultiLayerPerceptron/MLP_trained.joblib')
-#dt = load('./DecisionTree/DT_trained.joblib')
+dt = load('./DecisionTree/DT_random_search.joblib')
+
+print(dt.best_estimator_, "\n", dt.best_params_, "\n", dt.best_score_  )
 
 path="."
 
