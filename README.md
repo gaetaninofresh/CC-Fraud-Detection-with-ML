@@ -23,7 +23,7 @@ Per l'implementazione dei modelli e l'analisi dei dati, sono state utilizzate le
 
 ## Analisi del dataset
 
-#### Caricamento ed esplorazione del dataset
+### Caricamento ed esplorazione del dataset
 
 Abbiamo utilizzato la libreria **pandas** per caricare e analizzare il dataset. Il dataset è stato letto tramite la funzione integrata di pandas per la lettura di file CSV. Per un'anteprima del dataset, abbiamo utilizzato la funzione *head()* per visualizzare le prime righe. Il dataset è composto da  **31 colonne** , tra cui:
 
@@ -32,19 +32,19 @@ Abbiamo utilizzato la libreria **pandas** per caricare e analizzare il dataset. 
 * **Amount** : Importo della transazione
 * **Class** : Etichetta binaria che indica se la transazione è fraudolenta *1* o legittima *0*
 
-#### Verifica valori mancanti
+### Verifica valori mancanti
 
 Per verificare la presenza di valori mancanti, abbiamo utilizzato la funzione *isnull().sum()*, questo ci ha permesso di confermare che il dataset non contiene valori nulli.
 
-#### Separazione delle feature e delle label
+### Separazione delle feature e delle label
 
 Abbiamo separato le feature *x* dalle label *y* utilizzando le funzioni di pandas. Le feature sono tutte le colonne tranne la colonna *Class* che rappresenta la label. Inoltre per facilitare l'elaborazione successiva, abbiamo convertito i DataFrame di pandas in array NumPy.
 
-#### Suddivisione in training set e test set
+### Suddivisione in training set e test set
 
 Abbiamo suddiviso il dataset in un training set *80%* e un test set *20%* utilizzando la tecnica dell' **holdout set** . Per mantenere il bilanciamento delle classi, abbiamo utilizzato il parametro *stratify.*
 
-#### Normalizzazione dei dati
+### Normalizzazione dei dati
 
 Infine, abbiamo normalizzato i dati utilizzando la classe *StandardScaler* di *scikit-learn*. Sebbene i dati fossero già normalizzati abbiamo optato per una seconda normalizzazione per garantire che tutte le feature avessero la stessa scala.
 
@@ -139,3 +139,5 @@ Il progetto ha dimostrato che tutti e tre i modelli *MLP, kNN, DT* sono in grado
 |   kNN   | 1.000000 | 1.000000  | 1.000000 | 1.000000 |
 |   MLP   | 0,998426 | 0.998427  | 0.998426 | 0,998426 |
 |   DC   | 0.999710 | 0.999710  | 0.999710 | 0.999710 |
+
+---
