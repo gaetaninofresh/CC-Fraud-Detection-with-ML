@@ -17,17 +17,6 @@ def sampleDataset(dataframe, frac):
       ]
 )
 
-
-path="."
-n_neighbors = 10
-
-data_full = pandas.read_csv(path+'\creditcard_2023.csv')
-data_full = data_full.dropna(subset=['Class'])
-
-
-
-data = sampleDataset(data_full, .5)
-
 def compareModels(features, target, n_neighbors, weights, verbose=False):
   results = []
   i = 0
@@ -41,8 +30,6 @@ def compareModels(features, target, n_neighbors, weights, verbose=False):
       model.fit(features, target)
       target_pred = model.predict(features)
 
-      #Cut ROC-AUC metrics because it was too intensive and it didn't give any significant results (it was 1.0 for pretty much every model)
-      #prob_pred = model.predict_proba(features)[:, 1]
       results.append(
           {
               "Neighbors" : nn,
@@ -61,10 +48,17 @@ def compareModels(features, target, n_neighbors, weights, verbose=False):
   return pandas.DataFrame(results)
 
 
+path="."
+
+data_full = pandas.read_csv(path+'\creditcard_2023.csv')
+data_full = data_full.dropna(subset=['Class'])
+
+data = sampleDataset(data_full, .5)
+
+
 n_neighbors = [k for k in range(2, 16, 2)]
 weights = ['uniform', 'distance']
 
-data = sampleDataset(data_full, .50)
 features = data.drop('Class', axis=1)
 target = data['Class']
 
