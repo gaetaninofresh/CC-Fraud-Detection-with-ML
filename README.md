@@ -65,18 +65,9 @@ Per l'addestramento del classificatore basato su MLP, abbiamo utilizzato la clas
 
 Il risultato migliore è stato ottenuto con i seguenti valori di ogni iperparametro:
 
-* *hidden_layer_sizes*: (100,100)
-* *activation: (ReLu)*
-* *solver*: (Adam)
-* *alpha*: (0.0001)
-* *learning_rate*: (Constant)
-* *batch_size*: (64)
-* *max_iter*: (100)
-* *early_stopping*: (True)
-* *validation_fraction*: (0.1)
-* *random_state*: (42)
+![1739138136074](image/README/1739138136074.png)
 
-Con questa configurazione, il modello ha raggiunto un'accuratezza del **99,84%** nella classificazione. Inoltre, abbiamo visualizzato l'andamento della funzione di perdita durante l'addestramento, mostrando come le prestazioni del modello siano migliorate con l'aumento delle epoche.
+Con la migliore configurazione, il modello ha raggiunto un'accuratezza del **99,84%** nella classificazione. Inoltre, abbiamo visualizzato l'andamento della funzione di perdita durante l'addestramento, mostrando come le prestazioni del modello siano migliorate con l'aumento delle epoche.
 
 ![1739121890539](image/README/1739121890539.png "Learning curve for Multi-Layer-Perceptron")
 
