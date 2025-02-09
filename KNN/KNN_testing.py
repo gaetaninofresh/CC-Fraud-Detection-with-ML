@@ -1,12 +1,21 @@
 import pandas
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from MLPRandomSearch import sampleDataset
 from joblib import dump
 from sklearn.metrics import  precision_score, accuracy_score, recall_score, f1_score
 from sklearnex import patch_sklearn
 
 patch_sklearn()
+
+
+#Quick and dirty way to resize the dataset keeping the classes balanced
+def sampleDataset(dataframe, frac):
+  return pandas.concat(
+      [
+          dataframe.loc[dataframe['Class'] == 0].sample(frac=frac, random_state=1),
+          dataframe.loc[dataframe['Class'] == 1].sample(frac=frac, random_state=1)
+      ]
+)
 
 
 path="."
@@ -61,4 +70,6 @@ target = data['Class']
 
 results = compareModels(features, target, n_neighbors, weights, verbose=True)
 
+
 dump(results, 'KNN_results.joblib')
+dump()

@@ -17,8 +17,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y,  test_size=0.2, strati
 
 
 
-#best_params = load('decision_tree_grid_search.joblib')
-best_params = {'criterion': 'gini', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'splitter': 'best'}
+best_params = load('DT_random_search.joblib')
 
 
 decision_tree = DecisionTreeClassifier(random_state=42, **best_params)

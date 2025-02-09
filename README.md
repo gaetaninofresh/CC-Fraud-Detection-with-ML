@@ -1,8 +1,6 @@
 # Progetto Introduzione All'Intelligenza Artificiale A.A. 2024/2025
 
-## Introduzione
-
-Il progetto mira a identificare le transazioni fraudolente utilizzando come metodologie di calssificazione K-Nearest Neighbor, un con Multi Layer Perceptron e Binary Decision Tree.
+Questo progetto mira a classificare transazioni come legittime o fraudolente utilizzando come metodologie di calssificazione K-Nearest Neighbor, un con Multi Layer Perceptron e Binary Decision Tree.
 
 ## Dataset
 
